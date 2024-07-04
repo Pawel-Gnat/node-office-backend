@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": "api",
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "api/**/*",
+    "types",
+    "index.ts",
+    "router",
+    "helpers",
+    "db",
+    "controllers",
+    "tsconfig.json",
+    "middlewares"
+  ]
+}
