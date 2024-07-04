@@ -21,7 +21,7 @@ const app = express()
 
 app.use(
 	cors({
-		origin: ORIGIN_URL,
+		origin: '*',
 		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 		allowedHeaders: ['Content-Type', 'Authorization'],
 		credentials: true,
@@ -35,7 +35,7 @@ app.use(bodyParser.json())
 const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
-		origin: ORIGIN_URL,
+		origin: '*',
 		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 		allowedHeaders: ['Content-Type', 'Authorization'],
 		credentials: true,
