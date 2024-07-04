@@ -21,7 +21,7 @@ const app = express()
 
 app.use(
 	cors({
-		origin: '*',
+		origin: ORIGIN_URL,
 		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 		allowedHeaders: ['Content-Type', 'Authorization'],
 		credentials: true,
@@ -35,11 +35,12 @@ app.use(bodyParser.json())
 const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
-		origin: '*',
+		origin: ORIGIN_URL,
 		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 		allowedHeaders: ['Content-Type', 'Authorization'],
 		credentials: true,
 	},
+	transports: ['websocket'],
 })
 
 io.on('connection', socket => {
