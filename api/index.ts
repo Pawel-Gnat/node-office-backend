@@ -40,7 +40,6 @@ const io = new Server(server, {
 		allowedHeaders: ['Content-Type', 'Authorization'],
 		credentials: true,
 	},
-	transports: ['websocket'],
 })
 
 io.on('connection', socket => {
