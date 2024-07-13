@@ -12,14 +12,14 @@ export const isAuthenticated = async (
   next: express.NextFunction
 ) => {
   try {
-    const sessionToken = req.cookies["api_auth_token"];
+    const sessionToken = req.cookies["authorization"];
 
     if (!sessionToken) {
       return res.sendStatus(403);
     }
 
     if (!process.env.JWT_SECRET) {
-      return res.status(500).json({ error: "Internal server error" });
+      return res.status(500).json("Internal server error");
     }
 
     try {
@@ -72,7 +72,7 @@ export const authorizeEditUserAccess = async (
     const queryUser = await getUserById(id);
 
     if (currentUserId !== queryUser?.id && currentUser.role !== "admin") {
-      return res.sendStatus(403);
+      return res.status(403).json({ error: "Forbidden", status: "warning" });
     }
 
     next();
@@ -105,7 +105,7 @@ export const authorizeEditClientAccess = async (
     const queryClient = await getClientById(id);
 
     if (currentUserId !== queryClient?.userId && currentUser.role !== "admin") {
-      return res.sendStatus(403);
+      return res.status(403).json({ error: "Forbidden", status: "warning" });
     }
 
     next();
